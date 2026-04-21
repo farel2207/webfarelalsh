@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Bebe</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Segoe UI',sans-serif;
+overflow:hidden;
+background:linear-gradient(135deg,#ffd6e7,#ffc0d8,#ffeaf4);
+color:#c2185b;
+text-align:center;
+}
+
+/* scene */
+.scene{
+position:absolute;
+width:100%;
+height:100vh;
+top:0;
+left:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:25px;
+transition:1s cubic-bezier(.77,0,.18,1);
+opacity:0;
+transform:scale(.9) rotate(3deg);
+}
+
+.scene.active{
+left:0;
+opacity:1;
+transform:scale(1) rotate(0);
+}
+
+.scene.prev{
+left:-100%;
+opacity:0;
+transform:scale(.9) rotate(-3deg);
+}
+
+/* teks */
+h1{
+font-size:22px;
+line-height:1.7;
+max-width:520px;
+padding:22px;
+border-radius:24px;
+background:rgba(255,255,255,.45);
+backdrop-filter:blur(10px);
+box-shadow:0 10px 30px rgba(255,105,180,.20);
+animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* foto */
+.scene5-img{
+width:160px;
+height:160px;
+border-radius:24px;
+object-fit:cover;
+margin-top:20px;
+box-shadow:0 15px 30px rgba(255,105,180,.25);
+animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-14px);}
+100%{transform:translateY(0);}
+}
+
+/* video */
+video{
+width:95%;
+max-width:430px;
+border-radius:22px;
+box-shadow:0 10px 30px rgba(255,105,180,.25);
+}
+
+/* slider foto */
+.slider{
+position:relative;
+width:95%;
+max-width:430px;
+}
+
+.slider img{
+width:100%;
+height:520px;
+object-fit:cover;
+border-radius:24px;
+box-shadow:0 15px 35px rgba(255,105,180,.25);
+transition:.5s ease;
+animation:zoomIn .8s ease;
+}
+
+@keyframes zoomIn{
+from{opacity:0;transform:scale(.9);}
+to{opacity:1;transform:scale(1);}
+}
+
+/* tombol bawah */
+.nav{
+position:fixed;
+bottom:25px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:18px;
+z-index:99;
+}
+
+.nav button{
+width:58px;
+height:58px;
+border:none;
+border-radius:50%;
+font-size:24px;
+cursor:pointer;
+background:rgba(255,255,255,.8);
+color:#c2185b;
+box-shadow:0 10px 20px rgba(0,0,0,.12);
+transition:.3s;
+}
+
+.nav button:hover{
+transform:scale(1.12);
+background:white;
+}
+
+/* foto nav bawah */
+.photo-nav{
+margin-top:18px;
+display:flex;
+gap:15px;
+}
+
+.photo-nav button{
+width:52px;
+height:52px;
+border:none;
+border-radius:50%;
+font-size:22px;
+background:rgba(255,255,255,.8);
+color:#c2185b;
+box-shadow:0 8px 20px rgba(0,0,0,.12);
+cursor:pointer;
+transition:.3s;
+}
+
+.photo-nav button:hover{
+transform:scale(1.1);
+}
+
+@media(max-width:768px){
+h1{font-size:18px;}
+.slider img{height:420px;}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+<source src="musicc.mp3">
+</audio>
+
+<!-- scene 1 -->
+<div class="scene active">
+<h1>
+Haiiii bebe selamat ulang tahunn <br>
+sayangkuu cintakuu manjaakuu bucukkuuu
+</h1>
+</div>
+
+<!-- scene 2 -->
+<div class="scene">
+<h1>
+iiii dah kepala 2 ajaa adikku nii <br><br>
+semoga apa yang bebe inginkan bisaa terwujud yaa<br><br>
+semoga bebe panjang umur sehat selalu,<br>
+yang baik baik lah pokoknya
+</h1>
+</div>
+
+<!-- scene 3 -->
+<div class="scene">
+<h1>
+sekarang kita emang lagi ldr <br><br>
+walaupun jarak kita 1359 km,<br>
+tapi aku gapernah jauh dari bebe <br><br>
+aku selalu ada buat bebe,<br>
+dan tetap mau ada di hari spesial bebe
+</h1>
+</div>
+
+<!-- scene 4 -->
+<div class="scene">
+<div class="slider">
+<img id="foto" src="WhatsApp Image 2026-04-21 at 18.21.19.jpeg">
+</div>
+
+<div class="photo-nav">
+<button onclick="prevPhoto()">❮</button>
+<button onclick="nextPhoto()">❯</button>
+</div>
+</div>
+
+<!-- scene 5 -->
+<div class="scene">
+<h1>Selamat Ulang Tahun Bebe</h1>
+<img src="WhatsApp Image 2026-04-21 at 18.23.04.jpeg" class="scene5-img">
+</div>
+
+<!-- scene 6 -->
+<div class="scene">
+<video id="videoKu" controls>
+<source src="Selamat ulang tahun sayang.mp4">
+</video>
+</div>
+
+<!-- Scene 7 -->
+<div class="scene">
+<h1>
+xixixixix selamat ulang tahun bebe<br>
+aku sayang bebe selamanya<br><br>
+wofyou bebe wofyou bebe<br><br>
+kangen bebeee<br><br>
+semoga cepet ketemu ya kita<br><br>
+- bebenya atilaa
+</h1>
+</div>
+
+<!-- tombol bawah -->
+<div class="nav">
+<button onclick="prevScene()">❮</button>
+<button onclick="nextScene()">❯</button>
+</div>
+
+<script>
+let music = document.getElementById("music");
+
+function playMusic(){
+    music.play();
+    document.removeEventListener("click", playMusic);
+    document.removeEventListener("touchstart", playMusic);
+}
+
+document.addEventListener("click", playMusic);
+document.addEventListener("touchstart", playMusic);
+</script>
+
+<script>
+let scenes=document.querySelectorAll(".scene");
+let current=0;
+
+function showScene(){
+scenes.forEach((scene,index)=>{
+scene.classList.remove("active","prev");
+
+if(index < current){
+scene.classList.add("prev");
+}
+if(index == current){
+scene.classList.add("active");
+}
+});
+}
+
+function nextScene(){
+if(current < scenes.length-1){
+current++;
+showScene();
+}
+}
+
+function prevScene(){
+if(current > 0){
+current--;
+showScene();
+}
+}
+
+/* swipe */
+let startX=0;
+
+document.addEventListener("touchstart",(e)=>{
+startX=e.touches[0].clientX;
+});
+
+document.addEventListener("touchend",(e)=>{
+let endX=e.changedTouches[0].clientX;
+
+if(startX-endX > 60) nextScene();
+if(endX-startX > 60) prevScene();
+});
+
+/* foto */
+let photos=[
+"WhatsApp Image 2026-04-21 at 18.21.19.jpeg",
+"WhatsApp Image 2026-04-21 at 18.21.41.jpeg",
+"WhatsApp Image 2026-04-21 at 18.22.30.jpeg",
+"WhatsApp Image 2026-04-21 at 18.22.37.jpeg",
+"WhatsApp Image 2026-04-21 at 18.22.51.jpeg"
+];
+
+let p=0;
+
+function nextPhoto(){
+p++;
+if(p>=photos.length)p=0;
+document.getElementById("foto").src=photos[p];
+}
+
+function prevPhoto(){
+p--;
+if(p<0)p=photos.length-1;
+document.getElementById("foto").src=photos[p];
+}
+</script>
+
+<script>
+let video = document.getElementById("videoKu");
+
+/* saat video diputar musik pause */
+video.addEventListener("play", function(){
+    music.pause();
+});
+
+/* saat video dijeda / selesai musik lanjut */
+video.addEventListener("pause", function(){
+    music.play();
+});
+
+video.addEventListener("ended", function(){
+    music.play();
+});
+</script>
+
+</body>
+</html>

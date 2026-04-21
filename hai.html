@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Bebe</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background: linear-gradient(135deg,#ffdde1,#ffc7d8,#ffeaf1);
+    font-family:'Segoe UI',sans-serif;
+    overflow:hidden;
+    color:#c2185b;
+    text-align:center;
+}
+
+/* scene */
+.scene{
+    position:absolute;
+    width:100%;
+    height:100vh;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:25px;
+}
+
+.active{
+    display:flex;
+    animation:fade 1.5s ease;
+}
+
+@keyframes fade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* box */
+.content-box{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+    max-width:95%;
+}
+
+/* teks */
+h1{
+    font-size:22px;
+    line-height:1.7;
+    color:#c2185b;
+    background:rgba(255,255,255,.45);
+    padding:18px 25px;
+    border-radius:22px;
+    backdrop-filter:blur(8px);
+    box-shadow:0 8px 25px rgba(255,105,180,.20);
+    max-width:500px;
+}
+
+/* FOTO SCENE 5 */
+.scene5-img{
+    width:140px;
+    height:140px;
+    object-fit:cover;
+    border-radius:22px;
+    margin-top:18px;
+    box-shadow:0 10px 24px rgba(255,105,180,0.25);
+    animation:fotoMasukBawah 1.5s ease,floatFoto 3s ease-in-out infinite;
+}
+
+@keyframes fotoMasukBawah{
+    from{
+        opacity:0;
+        transform:translateY(60px) scale(.8);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes floatFoto{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0);}
+}
+
+/* VIDEO DIBESARIN */
+video{
+    width:95%;
+    max-width:430px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(255,105,180,.25);
+}
+
+/* slideshow */
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-size:cover;
+    background-position:center;
+    animation:zoomFoto 5s linear infinite alternate;
+}
+
+@keyframes zoomFoto{
+    from{transform:scale(1);}
+    to{transform:scale(1.08);}
+}
+
+/* hp */
+@media(max-width:768px){
+
+    h1{
+        font-size:18px;
+        max-width:95%;
+    }
+
+    .scene5-img{
+        width:125px;
+        height:125px;
+    }
+
+    video{
+        width:95%;
+        max-width:380px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
+</audio>
+
+<!-- Scene 1 -->
+<div id="scene1" class="scene active">
+    <h1>
+        Haiiii bebe selamat ulang tahunn <br>
+        sayangkuu cintakuu manjaakuu bucukkuuu
+    </h1>
+</div>
+
+<!-- Scene 2 -->
+<div id="scene2" class="scene">
+    <h1>
+        iiii dah kepala 2 ajaa adikku nii <br><br>
+        semoga apa yang bebe inginkan bisaa terwujud yaa<br><br>
+        semoga bebe panjang umur sehat selalu,<br>
+        yang baik baik lah pokoknya
+    </h1>
+</div>
+
+<!-- Scene 3 -->
+<div id="scene3" class="scene">
+    <h1>
+        sekarang kita emang lagi ldr <br><br>
+        walaupun jarak kita 1359 km,<br>
+        tapi aku gapernah jauh dari bebe <br><br>
+        aku selalu ada buat bebe,<br>
+        dan tetap mau ada di hari spesial bebe
+    </h1>
+</div>
+
+<!-- Scene 4 -->
+<div id="scene4" class="scene">
+    <div id="slide" class="slide"></div>
+</div>
+
+<!-- Scene 5 -->
+<div id="scene5" class="scene">
+    <h1>Selamat Ulang Tahun Bebe</h1>
+    <img src="WhatsApp Image 2026-04-21 at 18.23.04.jpeg" class="scene5-img">
+</div>
+
+<!-- Scene 6 -->
+<div id="scene6" class="scene">
+    <video id="birthdayVideo" controls>
+        <source src="Selamat ulang tahun sayang.mp4" type="video/mp4">
+    </video>
+</div>
+
+<!-- Scene 7 -->
+<div id="scene7" class="scene">
+    <div class="content-box">
+        <h1>
+            ga banyak kata sih…<br>
+            tapi aku beneran sayang sama kamu 💖<br><br>
+            selamat ulang tahun ya bebe 🎉<br><br>
+            kangen sih… tapi ya ditahan dulu 😅<br><br>
+            semoga cepet ketemu ya kita 💕<br><br>
+            - farell
+        </h1>
+    </div>
+</div>
+
+<script>
+
+// musik
+setTimeout(()=>{
+    document.getElementById("music").play();
+},1000);
+
+// daftar scene
+let scenes=["scene1","scene2","scene3","scene4","scene5","scene6","scene7"];
+let index=0;
+let timer;
+
+// pindah scene
+function nextScene(){
+
+    document.getElementById(scenes[index]).classList.remove("active");
+    index++;
+
+    if(index < scenes.length){
+
+        document.getElementById(scenes[index]).classList.add("active");
+
+        if(scenes[index] === "scene6"){
+
+            clearInterval(timer);
+
+            let vid=document.getElementById("birthdayVideo");
+            vid.currentTime=0;
+            vid.play();
+
+            vid.onended=function(){
+                nextScene();
+                timer=setInterval(nextScene,5000);
+            };
+        }
+    }
+}
+
+// mulai
+timer=setInterval(nextScene,5000);
+
+// slideshow
+let photos=[
+"WhatsApp Image 2026-04-21 at 18.21.19.jpeg",
+"WhatsApp Image 2026-04-21 at 18.21.41.jpeg",
+"WhatsApp Image 2026-04-21 at 18.22.30.jpeg",
+"WhatsApp Image 2026-04-21 at 18.22.37.jpeg",
+"WhatsApp Image 2026-04-21 at 18.22.51.jpeg"
+];
+
+let i=0;
+
+setInterval(()=>{
+    let slide=document.getElementById("slide");
+
+    if(slide){
+        slide.style.backgroundImage="url('"+photos[i]+"')";
+        i=(i+1)%photos.length;
+    }
+},2000);
+
+</script>
+
+</body>
+</html>
